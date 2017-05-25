@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UniversityApp.Models.Department>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    @Html.ActionLink("Add Department", "Create", new { }, new { @class = "text-success", @style = "" })
+</h2>
+<hr/>
+<table class="table">
+    <tr>
+        <th>
+             @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Number of Student
+        </th>
+        <th>
+            View Students
+        </th>
+        <th>
+            View Course List
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Students.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Click Here..", "DeptWiseStudent", new { id = item.DepartmentID })
+            </td>
+            <td>
+                @Html.ActionLink("Click Here..", "DeptWiseCourse", new { id = item.DepartmentID })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID }, new { @class = "text-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

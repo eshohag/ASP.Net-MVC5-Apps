@@ -1,0 +1,36 @@
+﻿@model IEnumerable<UniversityApp.Models.Student>
+
+@{
+    ViewBag.Title = "DeptWiseStudent";
+}
+
+<h2>Department Wise Student</h2>
+<hr/>
+
+<table class="table">
+    <tr>
+      <th>SL</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+      
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+        </tr>
+    }
+    
+   
+</table>
+@Html.ActionLink("Back to Department","Index")

@@ -1,0 +1,73 @@
+﻿@model UniversityRegistrationProcess.Models.Course
+@{
+    ViewBag.Title = "SaveCourse";
+}
+<style>
+    .field-validation-error {
+    color:#F00;
+    font-weight:bold;
+}
+</style>
+<div style="background-color: palegoldenrod">
+    <div style="padding: 10px">
+        <h2>Save Course</h2>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "SaveCourseForm", @class = "form-group col-md-offset-4" }))
+        {
+            <table >
+
+                <tr>
+                    <td>@Html.LabelFor(a => a.Code)</td>
+                    <td>@Html.TextBoxFor(a => a.Code, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.Code)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Name)</td>
+                    <td>@Html.TextBoxFor(a => a.Name, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Credit)</td>
+                    <td>@Html.TextBoxFor(a => a.Credit, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.Credit)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Description)</td>
+                    <td>@Html.TextAreaFor(a => a.Description, new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.Description)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.DepartmentId)</td>
+                    <td>@Html.DropDownListFor(a => a.DepartmentId, new SelectList(ViewBag.Departments, "Value", "Text"), "--Select Department--", new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.DepartmentId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.SemesterId)</td>
+                    <td>@Html.DropDownListFor(a => a.SemesterId, new SelectList(ViewBag.Semesters, "Value", "Text"), "--Select Semester--", new { @class = "form-control" })</td>
+                    <td>@Html.ValidationMessageFor(a => a.SemesterId)</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input id="SaveSubmit" class="btn btn-primary" type="submit"  value="Save" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @if (ViewBag.SaveMessage != null)
+                        {
+                            <h4 style="color: red;font-weight: bold;">@ViewBag.SaveMessage</h4>
+                        }
+                      
+                    </td>
+                </tr>
+
+            </table>
+        }
+    </div>
+</div>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

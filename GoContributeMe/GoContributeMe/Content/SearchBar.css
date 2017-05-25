@@ -1,0 +1,57 @@
+﻿
+.webdesigntuts-workshop input {
+    border: 1px solid red;
+    border-radius: 5px 0 0 5px;
+    color: red;
+    display: block;
+    float: left;
+    font-family: 'Cabin', helvetica, arial, sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    height: 41px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0 10px;
+    min-width: 60%;
+    max-width: 70%;
+    /*border: 1px solid black;
+     opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+   
+}
+
+
+    .webdesigntuts-workshop input:focus {
+        -webkit-animation: glow 800ms ease-out infinite alternate;
+        -moz-animation: glow 800ms ease-out infinite alternate;
+        -o-animation: glow 800ms ease-out infinite alternate;
+        -ms-animation: glow 800ms ease-out infinite alternate;
+        animation: glow 800ms ease-out infinite alternate;
+        border-color: #393;
+        box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 1px 0 green;
+        outline: none;
+    }
+
+
+
+.webdesigntuts-workshop button {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
+    border: 1px solid green;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    display: block;
+    float: left;
+    font-family: 'Cabin', helvetica, arial, sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    height: 40px;
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 80px;
+}

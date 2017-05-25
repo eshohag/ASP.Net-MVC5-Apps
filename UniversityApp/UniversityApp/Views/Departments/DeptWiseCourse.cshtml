@@ -1,0 +1,39 @@
+﻿@model IEnumerable<UniversityApp.Models.Course>
+
+@{
+    ViewBag.Title = "DeptWiseCourse";
+}
+
+<h2>@ViewBag.DeptName Wise Course</h2>
+<p>Total Number of Course: @Model.Count()</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Department.Code)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Department.Code)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+      
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to Department","Index")

@@ -1,0 +1,7 @@
+﻿.colorChange {
+    color: red !important;
+
+}
+.colorChange:hover {
+    color: whitesmoke !important;
+}

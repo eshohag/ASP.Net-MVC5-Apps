@@ -1,0 +1,77 @@
+﻿@model ChEBUTEApps.Models.Teacher
+
+@{
+    ViewBag.Title = "AddTeacher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section BodyCSS
+{
+    <style>
+        .editor-field textarea {
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+
+}
+<h3>Add Teacher</h3>
+
+<div class="col-md-9 col-md-offset-3">
+
+
+    @using (Html.BeginForm("AddTeacher", "Teacher", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name Here..." } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+
+                @Html.LabelFor(model => model.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.ProfilePic, new { type = "file" })
+                    @Html.ValidationMessageFor(model => model.ProfilePic, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group editor-field">
+                @Html.LabelFor(model => model.Designation, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Designation, new { htmlAttributes = new { @class = "form-control", placeholder = "Designation Here.." } })
+                    @Html.ValidationMessageFor(model => model.Designation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-warning" />
+                </div>
+            </div>
+            @if (@ViewBag.Message != null)
+            {
+                <h3 style="color: red;">
+                    @ViewBag.Message
+                </h3>
+
+            }
+        </div>
+    }
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

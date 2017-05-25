@@ -1,0 +1,49 @@
+﻿@model GoContributeMe.Models.ViewModel.ViewModelCampaign
+
+@{
+    ViewBag.Title = "Acccount";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+@section BodyNeededCSS
+{
+
+
+    <link href="~/Content/SearchBar.css" rel="stylesheet" />
+    <style>
+
+
+    </style>
+}
+
+<div class="col-md-12 col-sm-12 backgroundImage img-responsive">
+    <div class="col-md-12 col-sm-12" style="text-align: center; color: white;">
+        <br /><br />
+        <h1 style="font-family: Righteous;">
+            Many ways to help, one place to start
+        </h1>
+        <p>Create a free campaign to start giving and receiving support</p>
+        <br />
+    </div>
+    <div class="col-md-12 col-sm-12 webdesigntuts-workshop" style="padding: 0 0 0 254px;">
+
+       @using (Html.BeginForm("Search", "User", FormMethod.Get, new {id = " ", @class = "form-group"}))
+       {
+           @Html.AntiForgeryToken()
+    @Html.EditorFor(model => model.Campaign.Tittle, new { htmlAttributes = new { @class = " ", @placeholder = "Search here..." } })
+
+           @*<input type="search" placeholder="Search here ...">*@
+           <button class="btn btn-primary">Search</button>
+       }
+    </div>
+    <div class="container" style="height: 530px; width: 100%">
+
+        @*No code Space balnk*@
+
+    </div>
+    <div class="btn-group btn-group-justified">
+        @Html.ActionLink("Start Fundraising", "Create", "Campaigns", new { area = "" }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Fund Someone", "All", "User", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+</div>
+

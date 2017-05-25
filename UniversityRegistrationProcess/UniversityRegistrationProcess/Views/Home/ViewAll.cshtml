@@ -1,0 +1,55 @@
+﻿@using System.ComponentModel
+@using UniversityRegistrationProcess.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Department> GetAllDepartments = ViewBag.GetAllDepartments;
+}
+
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+
+<div style="background-color: palegoldenrod; ">
+    <h2 style="text-align: center; padding-top: 10px">View All Departments</h2>
+    <div style="margin: 20px;">
+        <table class=" table table-bordered table-hover" id="myTable">
+            <thead>
+                <tr style="background-color: #524527; padding: 20px;">
+                    <th style="padding: 20px; text-align: center; color: white">Code</th>
+                    <th style="padding: 20px; text-align: center; color: white">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @*@if (GetAllDepartments != null)
+                    {*@
+                @foreach (Department ListOfDept in GetAllDepartments)
+                {
+                    <tr>
+                        <td>@ListOfDept.DeptCode</td>
+                        <td>@ListOfDept.DeptName</td>
+                    </tr>
+                }
+                @* } *@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section scripts
+    {
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#myTable").DataTable();
+
+        });
+    </script>
+}
+
+
+
+
+
+

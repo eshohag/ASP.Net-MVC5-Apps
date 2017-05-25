@@ -1,0 +1,227 @@
+﻿@using UniversityRegistrationProcess.Models
+@{
+    ViewBag.Title = "ClassRoom";
+    List<Department> aDpartments = ViewBag.Departments;
+    List<Room> Rooms = ViewBag.Rooms;
+    List<Day> Days = ViewBag.Days;
+}
+
+
+
+<style>
+    label.error {
+        color: red;
+    }
+</style>
+<link href="~/Content/wickedpicker.css" rel="stylesheet" />
+<link href="~/Content/jquery.timepicker.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.timepicker.js"></script>
+
+@*<script type="text/javascript">
+    $('#disableTimeRangesExample').timepicker({
+        'disableTimeRanges': [
+            ['1am', '2am'],
+            ['3am', '4:01am']
+        ]
+    });
+</script>*@
+
+<div style="background-color: palegoldenrod; padding: 20px;">
+    <h2>Allocate Class Room.....</h2>
+    <form method="POST" id="myCousrseAssign" class="form-group col-md-offset-4">
+        <table>
+            <tr>
+                <td>
+                    <label for="DepartmentId">Department</label>
+                </td>
+                <td>
+                    <select name="DepartmentId" id="DepartmentId" class="form-control">
+                        <option value="">...Select Department...</option>
+                        @foreach (var department in aDpartments)
+                        {
+                            <option value="@department.DeptId">@department.DeptName</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="CourseId">Course</label></td>
+                <td>
+                    <select id="CourseId" name="CourseId" class="form-control"></select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="RoomId">Room No</label>
+                </td>
+                <td>
+                    <select name="RoomId" id="RoomId" class="form-control">
+                        <option value="">...Select Your Room...</option>
+                        @foreach (var aRoom in Rooms)
+                        {
+                            <option value="@aRoom.Id">@aRoom.Number</option>
+                        }
+                    </select>
+                </td>
+            </tr>   
+            <tr>
+                <td>
+                    <label for="DaysId">Day</label>
+                </td>
+                <td>
+                    <select name="DaysId" id="DaysId" class="form-control">
+                        <option value="">...Select Your Day...</option>
+                        @foreach (var aRoom in Days)
+                        {
+                            <option value="@aRoom.Id">@aRoom.Name</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="FromId">Time Schedule From</label></td>
+                <td>
+                    
+                    <input type="text" id="FromId" name="FromId" class="disableTimeRangesExample form-control" />
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="ToId">Time Schedul To</label></td>
+                <td>
+
+                    <input type="text" id="ToId" name="ToId" class="basicExample form-control" />
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Allocate" class="btn btn-danger"  /></td>
+            </tr>
+
+
+        </table>
+        <div class="has-success">
+            @if (ViewBag.SaveMessage != null)
+            {
+                <h3 style="color: red;font-weight: bold;">@ViewBag.SaveMessage</h3>
+            }
+        </div>
+    </form>
+</div>
+@section scripts{
+
+
+    <script src="~/Scripts/jquery.validate.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+  
+<script src="~/Scripts/jquery.timepicker.js"></script>
+
+@*<script src="~/Scripts/wickedpicker.js"></script>*@
+    <script>
+
+
+        $("#DepartmentId").change(function() {
+            var deptId = $("#DepartmentId").val();
+            $("#CourseId").empty();
+            $("#CourseId").append('<option value="">...Select Course Code...</option>');
+            var json = { departmentId: deptId };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetCourseByDepartmentId", "Course")',
+                //url: '/CourseAssign/GetCourseByDepartmentId',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(json),
+                success: function(data) {
+
+                    //alert(data);
+                    $.each(data, function(key, value) {
+                        //alert(key);
+                        $("#CourseId").append('<option value=' + value.CourseId + '>' + value.Name + '</option>');
+                      
+
+                    });
+                }
+            });
+
+        });
+
+
+        $('.disableTimeRangesExample').timepicker({
+            'disableTimeRanges': [
+                ['1am', '2am'],
+                ['3am', '4:01am']
+            ]
+        });
+
+        $('.basicExample').timepicker();
+
+
+        //$(document).ready(function () {
+        //    $("#FromId").val('');
+        //    $("#ToId").val('');
+        //    $("#FromId").click(function () {
+        //        $("#FromId").val('');
+        //        $("#FromId").wickedpicker({
+        //            title: 'Pls select your Room allocation time ',
+        //            //upArrow: 'wickedpicker_controls_control-up',
+        //            //downArrow:'wickedpicker_controls_control-down',
+        //            clearable: true
+        //        });
+        //    });
+        //    $("#ToId").click(function () {
+        //        $("#ToId").val('');
+
+        //        $("#ToId").wickedpicker({
+        //            title: 'Pls select your Room allocation time ',
+        //            clearable: true
+
+        //        });
+        //    });
+
+        //});
+        //$('.timepicker').wickedpicker('time', 0);
+         //$('.timepicker').wickedpicker({now: '8:16', twentyFour: false, title:
+         //        'My Timepicker', showSeconds: true});
+        //    $('.timepicker-24').wickedpicker({twentyFour: true});
+    
+
+
+        $(document).ready(function() {
+
+
+            $("#myCousrseAssign").validate({
+                rules: {
+                    DepartmentId: "required",
+                    CourseId: "required",
+                    RoomId: "required",
+                    DaysId: "required",
+                    FromId: "required",
+                    ToId: "required"
+
+                },
+                messages: {
+                    DepartmentId: "Please Select your Department",
+                    CourseId: "Please Select your Course",
+                    RoomId: "Please Select your Class Room",
+                    DaysId: "Please Select your Class Days",
+                    FromId: "Input your Time",
+                    ToId: "Input your Time"
+
+                }
+            });
+
+
+
+        });
+
+
+      
+
+    </script>
+}

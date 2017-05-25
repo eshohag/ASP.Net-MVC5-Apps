@@ -1,0 +1,157 @@
+﻿@using ChEBUTEApps.Models
+@model ChEBUTEApps.Models.Upload
+
+@{
+    ViewBag.Title = "Upload's";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Batch> allBatch = ViewBag.BatchList;
+}
+
+@using (Html.BeginForm("File", "StudentCorner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend style="padding-top: 35px;">Custom Files Sender DashBoard...</legend>
+        <div class="col-md-12">
+            <div style="background-color: orange !important; height: 33px;" class="col-md-3">
+                <div style="float: left;">
+                    <div style="float: left;">
+                        @Html.Label("Batch", new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        <select name="ID" id="Name" class="form-control">
+                            <option value="">...Select Batch...</option>
+                            <option value="">Batch Name-1</option>
+                            <option value="">Batch Name-2</option>
+                            <option value="">Batch Name-3</option>
+
+
+
+                            @*@foreach (var aBatch in allBatch)
+                            {
+                                <option value="@aBatch.ID">@aBatch.Name</option>
+                            }*@
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9" style="background-color: ; height: 33px;">
+                <h4 style="text-align: left;">OR</h4>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+        </div>
+        <div class="col-md-12">
+            <div style="background-color: orange !important; height: 33px;" class="col-md-7">
+                <div style="float: left;">
+                    <div style="float: left;">
+                        @Html.Label("Batch", new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        <select name="ID" id="Name" class="form-control">
+                            <option value="">...Select Batch...</option>
+                            <option value="">Batch Name-1</option>
+                            <option value="">Batch Name-2</option>
+                            <option value="">Batch Name-3</option>
+                            @*@foreach (var aBatch in allBatch)
+                            {
+                                <option value="@aBatch.ID">@aBatch.Name</option>
+                            }*@
+                        </select>
+                    </div>
+                </div>
+                <div style="float: left;" class="col-md-offset-1">
+                    <div style="float: left">
+                        @Html.LabelFor(x => x.SpecificID, new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        @Html.TextBoxFor(x => x.SpecificID, new { type = "text", @class = "form-control", @placeholder = "Specific ID" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <h4 style="text-align: left">OR</h4>
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+        </div>
+        <div class="col-md-12">
+            <div style="background-color: orange !important; height: 33px;" class="col-md-12">
+                <div style="float: left;">
+                    <div style="float: left;">
+                        @Html.Label("Batch", new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        <select name="ID" id="Name" class="form-control">
+                            <option value="">...Select Batch...</option>
+                            <option value="">Batch Name-1</option>
+                            <option value="">Batch Name-2</option>
+                            <option value="">Batch Name-3</option>
+                            @*@foreach (var aBatch in allBatch)
+                            {
+                                <option value="@aBatch.ID">@aBatch.Name</option>
+                            }*@
+                        </select>
+                    </div>
+                </div>
+                <div style="float: left;" class="col-md-offset-1">
+                    <div style="float: left">
+                        @Html.LabelFor(x => x.StartID, new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        @Html.TextBoxFor(x => x.StartID, new { type = "text", @class = "form-control", @placeholder = "Start ID" })
+                    </div>
+                </div>
+                <div style="float: left;" class="col-md-offset-1">
+                    <div style="float: left">
+                        @Html.LabelFor(x => x.EndingID, new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+                    </div>
+                    <div style="float: left; margin-left: 30px;">
+                        @Html.TextBoxFor(x => x.EndingID, new { type = "text", @class = "form-control", @placeholder = "Ending ID" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <br />
+        </div>
+        <div class="col-md-12">
+            @Html.Label("Select Files...", new { @style = "color: whitesmoke!important; padding-left: 10px; padding-top: 7px;" })
+            @Html.TextBoxFor(x => x.Files, new { type = "file" })
+            @Html.ValidationMessageFor(x => x.Files,"", new { @style = "color: red!important;"})
+            <br />
+            <button type="submit" class="btn btn-warning">Upload</button>
+            @if (@ViewBag.Message != null)
+            {
+                <h3 style="color: red;">
+                    @ViewBag.Message
+                </h3>
+
+            }
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+           
+        </div>
+
+    </fieldset>
+}
+
+
+@section BodyScripts
+{
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+
+
+
+    </script>
+}

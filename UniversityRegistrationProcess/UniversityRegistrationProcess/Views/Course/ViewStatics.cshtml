@@ -1,0 +1,74 @@
+﻿@using UniversityRegistrationProcess.Models
+@model UniversityRegistrationProcess.Models.Department
+@{
+    ViewBag.Title = "ViewStatics";
+    List<ViewCourseStatics> AllCourse = ViewBag.AllCourse;
+}
+
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+
+
+<div style="background-color: palegoldenrod; padding: 20px;">
+    <h2>View Course Statics.....</h2>
+    <div class="form-group">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @style = " text-align: center;margin-left: 400px" }))
+        {
+            @Html.DropDownListFor(d => d.DeptId, new SelectList(ViewBag.Departments, "Value", "Text"), "....Select your Department....", new { @class = "form-control" })
+        }
+    </div>
+
+
+
+
+    <table id="myTable" class="table table-bordered table-hover">
+        <thead>
+            <tr style="background-color: #524527; padding: 20px;">
+                <th style="padding: 20px; text-align: center; color: white">Code</th>
+                <th style="padding: 20px; text-align: center; color: white">Name</th>
+                <th style="padding: 20px; text-align: center; color: white">Semester</th>
+                <th style="padding: 20px; text-align: center; color: white">Assigned To</th>
+
+
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+
+
+
+
+        </tbody>
+
+    </table>
+</div>
+
+@section scripts
+    {
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#myTable").hide();
+            $("#DeptId").change(function () {
+                var deptId = $("#DeptId").val();
+                //$("#studentId").empty();
+                $("#tableBody").empty();
+                var json = { deptId: deptId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseSemesterByDepartmentId", "Course")',
+                    //url: '/Department/GetStudentsByDepartmentId',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                        $("#myTable").show();
+                        //alert(data);
+                        $.each(data, function (key, value) {
+                            $("#tableBody").append('<tr><td>' + value.Code + '</td><td>' + value.Name + '</td><td>' + value.Semester_Name + '</td><td>' + value.Teacher_Name + '</td></tr>');
+                        });
+                        $("#myTable").DataTable();
+                    }
+                });
+            });
+        });
+    </script>
+}

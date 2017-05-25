@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>@ViewBag.Title University Student Registration Process</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/searchbar.css" rel="stylesheet" />
+    <link href="~/Content/memenu.css" rel="stylesheet"/>
+  
+    <link rel="icon" href="~/Images/favicon.ico" />     
+    <script src="~/Scripts/jquery-3.1.0.js"></script>
+    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <script src="~/Scripts/simpleCart.min.js"></script>
+    <script src="~/Scripts/memenu.js"></script>
+    <script>
+        $(document).ready(function () { $(".memenu").memenu(); });
+    </script>
+    <script src="~/Scripts/jquery.easydropdown.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top-header">
+            <div class="container">
+                <div class="top-header-main">
+                    <div class="col-md-4">
+                        <div class="drop">
+                            <div class="box1">
+                                <select tabindex="4" class="dropdown">
+                                    
+                                    <option value="1">English</option>
+                                    <option value="2">Bangla</option>
+                                    <option value="3">French</option>
+                                    <option value="4">German</option>
+                                </select>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-6 top-header-left">
+
+                        <script type="text/javascript">
+                            tday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                            tmonth = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+                            function GetClock() {
+                                var d = new Date();
+                                var nday = d.getDay(), nmonth = d.getMonth(), ndate = d.getDate(), nyear = d.getYear();
+                                if (nyear < 1000) nyear += 1900;
+                                var nhour = d.getHours(), nmin = d.getMinutes(), nsec = d.getSeconds(), ap;
+
+                                if (nhour == 0) {
+                                    ap = " AM";
+                                    nhour = 12;
+                                } else if (nhour < 12) {
+                                    ap = " AM";
+                                } else if (nhour == 12) {
+                                    ap = " PM";
+                                } else if (nhour > 12) {
+                                    ap = " PM";
+                                    nhour -= 12;
+                                }
+
+                                if (nmin <= 9) nmin = "0" + nmin;
+                                if (nsec <= 9) nsec = "0" + nsec;
+
+                                document.getElementById('clockbox').innerHTML = "" + tday[nday] + ", " + ndate + " -" + tmonth[nmonth] + "- " + nyear + ", " + nhour + ":" + nmin + ":" + nsec + ap + "";
+                            }
+
+                            window.onload = function () {
+                                GetClock();
+                                setInterval(GetClock, 1000);
+                            }
+                        </script>
+
+                        <div id="clockbox" style="color: white; padding-top: 8px; text-align: center"></div>
+
+                    </div>
+                    <div class="col-md-3 col-md-offset-1 col-xs-12">
+
+                        <section class="webdesigntuts-workshop">
+                            <form action="" method="GET">
+                                <input type="search" placeholder="Search...">
+                                <button style="width: 83px"><i class="fa fa-search fa-2x" aria-hidden="true"></i></button>
+                            </form>
+                        </section>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--top-header-->
+    <!--start-logo-->
+    <div class="logo">
+        <a href="@Url.Action("Index","Home")"><h1><img src="~/images/logo-2.png" alt="" /><b>University Course & Result Management System</b></h1></a>
+        @*<p>@Html.ActionLink("EST-2016(UK)", "Index","Home")</p>*@
+
+        <div class="container">
+
+            <!--News Ticker use-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <!--start-logo-->
+    <!--bottom-header-->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="header">
+                <div class="col-md-12 header-left">
+                    <div class="top-nav">
+                        <ul class="memenu skyblue">
+                            <li class="">
+                                <a href="#">About <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Message</h4>
+                                            <ul>
+                                                <li><a href="#">Vice Chancelor</a></li>
+                                                <li><a href="#">pro. Vice Chancelor</a></li>
+                                                <li><a href="#">Trust Secratary</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Trustee board</h4>
+                                            <ul>
+                                                <li><a href="#">Members of the Board of Trustees, MATS <br>List will be updated soon </a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Student Sign-up/Login </h4>
+                                            <ul>
+                                                <li><a href="#">Login</a></li>
+                                                <li><a href="#">Sign-up</a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Department <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Enter</h4>
+                                            <ul>
+                                                <li>@Html.ActionLink("Save Department", "SaveDept", "Home")</li>
+
+                                            </ul>
+                                            <ul>
+                                                <li>@Html.ActionLink("Save Teacher", "SaveTeacher", "Teacher")</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Display</h4>
+                                            <ul>
+                                                <li>@Html.ActionLink("View All Departments","ViewAll","Home")</li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Course <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Enter</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("SaveCourse", "Course")">Save Course </a></li>                               
+                                                <li><a href="@Url.Action("AssignTeacher","Course")">Course Assign to Teacher </a></li>
+                                                
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Display</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("ViewStatics","Course")">View Course Statics </a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Registration <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Enter</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("Register","Student")"> Student Registration</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Allocate Classrooms </h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("ClassRoom","Student")">Allocate Class-Room </a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Display</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("ClassSchedualRoom", "Student")">View Class Schedule and Room Allocation Information </a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="grid">
+                                <a href="@Url.Action("Enroll", "Course")"> Enroll Course </a>
+                            </li>
+                            <li class="grid">
+                                <a href="#">Result <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i> </a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Enter</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("SaveResult","Student")"> Save Student Result </a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Display</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("DisplayResult","Student")"> View Result </a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li class="grid">
+                                <a href="#"> Unassign & Unallocate <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i> </a>
+                                <div class="mepanel">
+                                    <div class="row">
+                                        <div class="col1 me-one">
+                                            <h4>Unassign</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("Unassign", "Course")">Unassign All Courses </a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col1 me-one">
+                                            <h4>Unallocate</h4>
+                                            <ul>
+                                                <li><a href="@Url.Action("UnallocatedRoom", "Student")">Unallocate All Classrooms </a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                           @* <li class="grid"> <a href="@Url.Action("Index", "Home")">Help</a></li>*@
+                            <li class="grid"> <a href="#">Help</a></li>
+
+                        </ul>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="container body-content" style="padding-bottom: 100px" >
+        @RenderBody()
+    </div>
+    
+    <!--footer-starts-->
+    <div class="footer" style="background-color: #524527">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    <form method="POST">
+                        <input type="text" style="color: white" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-2">
+                    <table>
+                        <tr>                          
+                            <td >
+                                <a href="@Url.Action("Index","Home")" style="color: white"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a></td>                       
+                        </tr>
+                    </table>
+
+
+
+                </div>
+                <div class="col-md-4 footer-right ">
+                    <p style="color: white">© 2015 MATS. All Rights Reserved | Design by  <a href="#" target="_blank" style="color: white">SHSA</a> </p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--footer-end-->	
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

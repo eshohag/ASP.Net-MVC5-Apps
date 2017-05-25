@@ -1,0 +1,91 @@
+﻿@using ChEBUTEApps.Models
+@model ChEBUTEApps.Models.Login
+
+
+@{
+    Layout = null;
+    string message = ViewBag.Messagae;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+
+
+
+    <style>
+        body {
+            background-image: url('../../Image/ECE Building.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="img-fluid">
+    <div class="tab-pane active col-xs-12 col-sm-12 col-md-10 col-md-offset-2 col-lg-10 col-lg-offset-2" id="Login" style="padding-top: 50px;">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = " ", @class = "form-horizontal" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa"></i></span>
+                        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", placeholder = "UserName or Email" })
+                        @Html.ValidationMessageFor(a => a.UserName)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                <div class="col-md-9 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
+                        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-9">
+                    <button type="submit" class="btn btn-warning btn-sm">
+                        Sign In
+                    </button>
+                    <a href="#"> Forgot your password?</a>
+                </div>
+            </div>
+            <div class="row col-md-offset-2 col-lg-offset-2">
+                @if (message != String.Empty)
+                {
+                    <h2 style="color: red;">@message</h2>
+
+                }
+
+            </div>
+        }
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+</body>
+</html>

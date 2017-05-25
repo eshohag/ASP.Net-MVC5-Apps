@@ -1,0 +1,83 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //string message = ViewBag.SaveMessage;    same as below
+    string message = @ViewBag.SaveMessage;
+}
+<style>
+    label.error {
+        color: red;
+    }
+</style>
+
+<div style="background-color: palegoldenrod">
+    <form method="POST" id="DeptSaveForm">
+        <table class="col-md-offset-4 form-group ">
+            <tr>
+                <td><label for="DeptCode" style="margin: 20px 0 0 20px; ">Department Code </label></td>
+                <td><input type="text" class="form-control" style="margin: 20px 0 0 0;" id="DeptCode" name="DeptCode" placeholder="Department Code..."></td>
+            </tr>
+            <tr>
+                <td><label for="DeptName" style="margin: 20px;">Department Name</label></td>
+                <td><input type="text" class="form-control" id="DeptName" name="DeptName" placeholder="Department Name..."></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" class="btn btn-danger" style="margin-bottom: 4px">Save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    @*<h4 class="col-md-offset-5" style="color: red; font-family: arial">@ViewBag.SaveMessage</h4><br/>*@
+    <h4 class="col-md-offset-5" style="color: red; font-family: arial">@message</h4><br/>
+  
+    
+</div>
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/additional-methods.js"></script>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#DeptSaveForm").validate({
+                rules: {
+                    DeptCode: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 7
+                    },
+                    DeptName: {
+                        required: true,
+                        notNumber: true
+                    }
+
+                },
+                messages: {
+                    DeptCode: {
+                        required: "Please Enter Dept Code ",
+                        minlength: "Minimum Length 2 characters",
+                        maxlength: "Maximum length 7 characters"
+                    },
+                    DeptName: {
+
+                        required: "Please Enter your Dept Name"
+
+                    }
+
+                }
+            });
+            jQuery.validator.addMethod("notNumber", function (value, element, param) {
+                var reg = /[0-9]/;
+                if (reg.test(value)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
+            "Number is not permitted");
+        });
+
+    </script>
+}

@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new {id="registerForm"}))
+    {
+        <fieldset>
+            <legend>Registration Form</legend>
+            <table>
+                <tr>
+                    <td>@Html.Label("Name")</td>
+                    <td>@Html.TextBox("Name")</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Email")</td>
+                    <td>@Html.TextBox("Email")</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Gender")</td>
+                    <td>
+                        @Html.RadioButton("Gender", "Male") Male
+                        @Html.RadioButton("Gender", "Female") Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Department")</td>
+                    <td>@Html.DropDownList("Department", new SelectList(ViewBag.Departments, "Value", "Text"))</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Address")</td>
+                    <td>@Html.TextArea("Address")</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Password")</td>
+                    <td>@Html.Password("Password")</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Register"/>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</div>
+</body>
+</html>

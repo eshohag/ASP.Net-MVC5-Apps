@@ -1,0 +1,39 @@
+﻿@using GoContributeMe.Models.ViewModel
+
+
+@{
+
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ViewAllDataInfo> AllData = ViewBag.Campaign;
+}
+@section BodyNeededCSS
+{
+
+    <link href="~/Content/style.css" rel="stylesheet" />
+}
+<h3 style="text-align: center;">Your Search Result: @AllData.Count Campaigns</h3>
+<div class="about-top grid-1 col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 jumbotron">
+    @foreach (ViewAllDataInfo aData in AllData)
+    {
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 about-left" style="padding: 10px;">
+
+            <figure class="effect-bubba">
+                <a href=@Url.Action("Public", "Contribute") class="">
+
+
+                    <img class="img-responsive" src="~/Image/ms.png" alt="" />
+                    <figcaption>
+                        <h2>@aData.Tittle</h2>
+
+
+                        <p>@aData.CategoriesName</p>
+
+
+                    </figcaption>
+                </a>
+            </figure>
+
+        </div>
+    }
+</div>

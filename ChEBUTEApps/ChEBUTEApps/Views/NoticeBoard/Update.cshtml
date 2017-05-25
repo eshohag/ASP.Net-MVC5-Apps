@@ -1,0 +1,90 @@
+﻿@model ChEBUTEApps.Models.Notice
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section BodyCSS
+{
+    <style>
+        .editor-field textarea {
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+
+}
+<h3>Update Here...</h3>
+<div class="col-md-9 col-md-offset-3">
+
+    @using (Html.BeginForm("Update", "NoticeBoard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.LevelNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LevelNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Level Number Here..." } })
+                    @Html.ValidationMessageFor(model => model.LevelNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TermNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TermNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Term Number Here..." } })
+                    @Html.ValidationMessageFor(model => model.TermNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Section, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select name="ID" id="Name" class="form-control">
+                        <option value="">...Select Section...</option>
+                        <option value="1">Section-A</option>
+                        <option value="2">Section-B</option>
+                        <option value="3">Section-C</option>
+                        <option value="4">Section-All</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Section, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group editor-field">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @style = "width:500px;", @placeholder = "Description Here..." } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-warning" />
+                </div>
+            </div>
+
+
+            @if (@ViewBag.Message != null)
+            {
+                <h3 style="color: red;">
+                    @ViewBag.Message
+                </h3>
+
+            }
+        </div>
+    }
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

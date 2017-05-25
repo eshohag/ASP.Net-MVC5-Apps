@@ -1,0 +1,177 @@
+﻿@{
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+    <!--banner-starts-->
+    <div class="bnr" id="home" style="width: 100%; height: 100%;">
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider4">
+                <li>
+                    <img src="~/images/bnr-1.jpg" alt="" />
+                    <div class="carousel-caption">
+                        <h3>Finance Building</h3>
+                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="~/images/bnr-2.jpg" alt="" />
+                    <div class="carousel-caption">
+                        <h3>Academic Building</h3>
+                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    </div>
+                </li>
+                <li>
+                    <img src="~/images/bnr-3.jpg" alt="" />
+                    <div class="carousel-caption">
+                        <h3>VC or Pro.VC Building</h3>
+                        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!--banner-ends-->
+    <!--Slider-Starts-Here-->
+    <script src="~/Scripts/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <!--End-slider-script-->
+    <!--about-starts-->
+    <div class="about">
+        <div class="container">              
+            <div class="about-top grid-1">
+                <br/>
+                <br/>
+                <br />
+                <h2 style="text-align:center">MATS Group Member :</h2>
+                <hr class="style12">
+                <div class="col-md-3 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="~/images/tanjil.jpg" alt="" />
+                        <figcaption>
+                            <h2>Tanjil Huda Sany </h2>
+                            <p>PHP,ASP.Net Developer...... </p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="col-md-3 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="~/images/shohag.jpg" alt="" />
+                        <figcaption>
+                            <h4>Md.Shohag Hassan</h4>
+                            <p>
+                                Life is speechless and I want to sleep......
+                            </p>
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="col-md-3 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="~/images/arif.jpg" alt=""/>
+                        <figcaption>
+                            <h4>Sheikh Arif Ahmed</h4>
+                            <p>ASP.NET Developer.....</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-md-3 about-left">
+                    <figure class="effect-bubba">
+                        <img class="img-responsive" src="~/images/mamun.jpg" alt="" />
+                        <figcaption>
+                            <h4>MR Mamun</h4>
+                            <p>He is a Business Man and Coder for MVC-5 with ASP.Net</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--about-end-->
+    <!--product-starts-->
+    <div class="product">
+        <div class="container">
+            <h2 style="text-align:center">Our Activities or Research </h2>
+            <hr class="style12">
+            <div class="product-top col-md-6" style="height:300px;">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/7qcaVScfiUI" frameborder="3px" allowfullscreen></iframe>
+            </div>
+            <div class="product-top col-md-6" style="height:300px;">
+                <h3 style="text-align:center">
+                    <ol>
+                        <a href="#">	<li>  Robotics  </li></a>
+                        <a href="#">	<li>  Go language Development  </li></a>
+                        <a href="#">	<li>  Nano techenology  </li></a>
+                        <a href="#">	<li>  Face Detection  </li></a>
+                        <a href="#">	<li>  Big Data  </li></a>
+                        <a href="#">	<li>  Web Management  </li></a>
+                        <a href="#">	<li>  Security Management  </li></a>
+                        <a href="#">	<li>  Artificial Intelegent </li></a>
+                        <a href="#">	<li>  Human Intrection  </li></a>
+                    </ol>
+                </h3>
+
+            </div>
+        </div>
+    </div>
+    <!--product-end-->
+    <!--information-starts-->
+    <div class="information">
+        <div class="container">
+            <div class="infor-top">
+                <div class="col-md-3 infor-left">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href ="http://www.facebook.com/shohaghassan.9000/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><h6>Facebook</h6></a></li>
+                        <li><a href="http://www.twitter.com/shohaghassn.9000" target="_blank">  <i class="fa fa-twitter" aria-hidden="true"></i><h6>Twitter</h6></a></li>
+                        <li><a href="https://www.google.com/" target="_blank"><i class="fa fa-google" aria-hidden="true"></i><h6>Google+</h6></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="#"><p>Notice Bord</p></a></li>
+                        <li><a href="#"><p>Specials</p></a></li>
+                        <li><a href="#"><p>News</p></a></li>
+                        <li><a href="#"><p>Contact Us</p></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Location</h3>
+                    <h4>
+                        MATS Group,Batch-20
+                        <span>Lorem ipsum dolor,</span>
+                        Glasglow Dr 40 Fe 72.
+                    </h4>
+                    <h5>+955 123 4567</h5>
+                    <p><a href="mailto:shohaghassan14@gmail.com">shohaghassan14@gmail.com</a></p>
+                </div>
+                <div class="col-md-3 infor-left">
+                    <h3>Google Map</h3>
+                    <iframe style="padding-top:20px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d595269.4359576434!2d91.89817152021566!3d22.31061804562017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd8a64095dfd3%3A0x5015cc5bcb6905d9!2sChittagong!5e0!3m2!1sen!2sbd!4v1469285078697" width="260" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!--information-end-->

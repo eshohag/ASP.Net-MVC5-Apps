@@ -1,0 +1,67 @@
+﻿@model GoContributeMe.Models.ViewModel.ViewModelCampaign
+
+
+@{
+    ViewBag.Title = ViewBag.Name;
+   
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+    int UserID = ViewBag.UserID;
+}
+@section BodyNeededCSS
+{
+<link href="~/Content/SearchBar.css" rel="stylesheet" />
+<style>
+
+
+</style>
+}
+
+<div class="col-md-12 col-sm-12 backgroundImage img-responsive">
+    <div class="col-md-12 col-sm-12" style="text-align: center; color: white;">
+        <br /><br />
+        <h1 style="font-family: Righteous;">
+            Many ways to help, one place to start here (@UserID)
+        </h1>
+        <p>Create a free campaign to start giving and receiving support</p>
+        <br />
+    </div>
+    <div class="col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-10 col-md-offset-3 col-md-9 col-lg-offset-3 col-lg-9  webdesigntuts-workshop">
+        @using (Html.BeginForm("Search", "User", FormMethod.Get, new { id = " ", @class = "form-group" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.EditorFor(model => model.Campaign.Tittle, new { htmlAttributes = new { @class = " ", @placeholder = "Search here..." } })
+            @*<input type="search" placeholder="Search here ...">*@
+            <button class="btn btn-primary">Search</button>
+        }
+    </div>
+
+    <div class="container hidden-xs hidden-sm hidden-md hidden-lg visible-xl" style="height: 560px; width: 100%">
+        @*No code Space balnk*@
+
+    </div>
+    <div class="container container hidden-xs hidden-sm hidden-md visible-lg hidden-xl" style="height: 530px; width: 100%">
+
+        @*No code Space balnk*@
+
+    </div>
+    <div class="container container hidden-xs hidden-sm visible-md hidden-lg hidden-xl" style="height: 520px; width: 100%">
+
+        @*No code Space balnk*@
+
+    </div>
+    <div class="container hidden-xs visible-sm hidden-md hidden-lg hidden-xl" style="height: 520px; width: 100%">
+
+        @*No code Space balnk*@
+
+    </div>
+    <div class="container visible-xs hidden-sm hidden-md hidden-lg hidden-xl" style="height: 250px; width: 100%">
+
+        @*No code Space balnk*@
+
+    </div>
+    <div class="btn-group btn-group-justified">
+
+        @Html.ActionLink("Start Fundraising", "Create", "Campaigns", new { area = "" }, new { @class = "btn btn-success" })
+        @Html.ActionLink("Fund Someone", "All", "User", new { area = "" }, new { @class = "btn btn-primary" })
+    </div>
+</div>

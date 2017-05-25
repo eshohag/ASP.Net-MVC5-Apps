@@ -1,0 +1,115 @@
+﻿@model UniversityRegistrationProcess.Models.Student
+@{
+    ViewBag.Title = "Register";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<style>
+    .field-validation-error {
+        color: #F00;
+        font-weight: bold;
+    }
+</style>
+<div style="background-color: palegoldenrod">
+
+    <h2>Student Register....</</h2>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "SaveStudentForm", @class = "form-group col-md-offset-3" }))
+{
+    <table style="font-size: 22px">
+        <tr>
+            <td style="font-size: 22px">@Html.LabelFor(a => a.Name)</td>
+            <td>@Html.TextBoxFor(a => a.Name, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(a => a.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Email)</td>
+            <td>@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(a => a.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.ContactNo)</td>
+            <td>@Html.TextBoxFor(a => a.ContactNo, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(a => a.ContactNo)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Date)</td>
+            <td>@Html.TextBoxFor(a => a.Date, new { @class = "form-control", id = "Date" })</td>
+            <td>@Html.ValidationMessageFor(a => a.Date)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Address)</td>
+            <td>@Html.TextAreaFor(a => a.Address, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(a => a.Address)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.DepartmentCode)</td>
+            <td>@Html.DropDownListFor(a => a.DepartmentCode, new SelectList(ViewBag.Departments, "Value", "Text"), "--Select Department--", new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(a => a.DepartmentCode)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input id="RegisterSaveSubmit" class="btn btn-primary" type="submit" value="Register" style="margin-bottom: 20px" />
+
+            </td>
+        </tr>
+        <tr style="color: red">
+            <td></td>
+            <td>
+                @if (ViewBag.StudentsSaveMessage != null)
+                {
+                    <h4>@ViewBag.StudentsSaveMessage</h4>
+                }
+            </td>
+        </tr>
+
+    </table>
+}
+
+</div>
+
+
+@section scripts{
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+
+        //$(function () {
+        //    $("#datepicker").datepicker();
+        //});
+        //function setInputDate(_id) {
+        //    var _dat = document.querySelector(_id);
+        //    var hoy = new Date(),
+        //        d = hoy.getDate(),
+        //        m = hoy.getMonth() + 1,
+        //        y = hoy.getFullYear(),
+        //        data;
+
+        //    if (d < 10) {
+        //        d = "0" + d;
+        //    };
+        //    if (m < 10) {
+        //        m = "0" + m;
+        //    };
+
+        //    data = m + "-" + d + "-" + y;
+        //    console.log(data);
+        //    _dat.value = data;
+        //};
+
+        //setInputDate("#datepicker");
+        var currentDate = new Date();
+
+
+        $('#Date').datepicker({
+            inline: true,
+            showOtherMonths: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            format: "dd-mm-yyyy"
+
+        });
+        $('#Date').datepicker("setDate", currentDate);
+    </script>
+}

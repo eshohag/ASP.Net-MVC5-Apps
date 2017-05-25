@@ -1,0 +1,70 @@
+﻿@using UniversityRegistrationProcess.Models
+@model UniversityRegistrationProcess.Models.Department
+@{
+    ViewBag.Title = "ClassSchedualRoom";
+}
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<div style="background-color: palegoldenrod; padding: 20px;">
+    <h2>Schedule Info.....</h2>
+    <div class="form-group">
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { @style = " text-align: center;margin-left: 400px" }))
+        {
+            @Html.DropDownListFor(d => d.DeptId, new SelectList(ViewBag.Departments, "Value", "Text"), "....Select your Department....", new { @class = "form-control" })
+        }
+    </div>
+
+
+
+
+    <table id="viewAllocateRoomTable" class="table table-bordered table-hover">
+        <thead>
+            <tr style="background-color: #524527; padding: 20px;">
+                <th style="padding: 20px; text-align: center; color: white">Course Code</th>
+                <th style="padding: 20px; text-align: center; color: white">Name</th>
+                <th style="padding: 20px; text-align: center; color: white">Schedule Info</th>
+
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/DataTables/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#DeptId").change(function() {
+                var deptId = $("#DeptId").val();
+                $("#tableBody").empty();
+                var json = { departmentId: deptId };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetAllocatedRoomViewByDepartmentId", "Student")',
+                    //url: '/Room/GetAllocatedRoomViewByDepartmentId',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    success: function(data) {
+                        $.each(data, function(key, value) {
+
+                            if (value.RoomName === '') {
+
+                                value.RoomName = "Not Allocated Yet";
+                            }
+                            $("#tableBody").append('<tr><td>' + value.Code + '</td><td>' + value.Name + '</td><td>' + value.RoomName + '  <br><strong>' + value.StartFrom + '<br>' + value.EndTo + '<br>'+value.DaysName+'</strong></td></tr>');
+                        });
+
+                        //$("#viewAllocateRoomTable").show();
+                        $("#viewAllocateRoomTable").DataTable();
+                    }
+                });
+            });
+        });
+    </script>
+}
